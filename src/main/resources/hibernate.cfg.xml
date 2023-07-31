@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration SYSTEM
+"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+<!--        driver class for mysql db is -->
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+<!--        connection url for mysql databse-->
+        <property name="connection.url">jdbc:mysql://localhost:3306/mycart</property>
+<!--        username for mysql db   -->
+        <property name="connection.username">root</property>
+        <property name="connection.password">system</property>
+        
+        <property name="dialect">org.hibernate.dialect.MySQL8Dialect</property>
+<!--        if there is no table thn this line will create -->
+        <property name="hbm2ddl.auto">update</property> 
+        <property name="show_sql">true</property>
+<!-- ctrl+shift +down arrow  -->
+        <mapping class="com.learn.mavenproject.entities.User"/>
+        <mapping class="com.learn.mavenproject.entities.Category"/>
+        <mapping class="com.learn.mavenproject.entities.Product"/>
+        
+    </session-factory>
+</hibernate-configuration>
+    
+
