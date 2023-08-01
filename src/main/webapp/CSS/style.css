@@ -7,6 +7,6 @@
     border:3px solid skyblue;
 } 
 .admin .card:hover{
-    background: grey;
+    background: lightblue;
     cursor:pointer;
 }
