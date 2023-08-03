@@ -6,7 +6,9 @@ import com.learn.mavenproject.entities.Category;
 import com.learn.mavenproject.entities.Product;
 import com.learn.mavenproject.helper.FactoryProvider;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -57,12 +59,13 @@ public class ProductOperationServlet extends HttpServlet {
 
                   String pName = request.getParameter("pName");
                   String pDesc=request.getParameter("pDesc");
+                  
                   int pPrice=Integer.parseInt(request.getParameter("pPrice"));
                   int pDiscount=Integer.parseInt(request.getParameter("pDiscount"));
                   int pQuantity=Integer.parseInt(request.getParameter("pQuantity"));
                   int catId =Integer.parseInt(request.getParameter("catId"));
                   Part part=request.getPart(("pPic"));
-                  
+              
                     
                  Product p= new Product();
                  p.setpTitle(pName);
@@ -80,16 +83,36 @@ public class ProductOperationServlet extends HttpServlet {
                   
                   //product save 
                   ProductDao pdao=new ProductDao(FactoryProvider.getFactory());
-                 // pdao.saveProduct(p);
-//                  out.println("Product save successfully");
+                 pdao.saveProduct(p);
+//                 
 
 //pic upload 
 //find out path to upload photo
                 String path=request.getRealPath("Image") + File.separator +"product" + File.separator +part.getSubmittedFileName();
                 System.out.println(path);
 
+                    // uploading code
+                    try{
+                        
+                    
+                    FileOutputStream fos= new FileOutputStream(path);
+                    InputStream is=  part.getInputStream(); //read
 
-
+                    // REading data
+                    
+                    byte[] data=new byte[is.available()];
+                    
+                    is.read(data);
+                    
+                    //writing data
+                    fos.write(data);
+                    fos.close();
+                    
+                    }catch(Exception e){
+                        e.printStackTrace();
+                    }
+                    
+             // out.println("Product save successfully");       
             HttpSession httpSession=request.getSession();
             httpSession.setAttribute("message", "Product is added succesfully:");           
             response.sendRedirect("admin.jsp");
