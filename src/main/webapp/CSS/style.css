@@ -10,3 +10,8 @@
     background: lightblue;
     cursor:pointer;
 }
+.list-group-item.active{
+  background-color:skyblue;
+  color:black;
+  border-color: skyblue;
+}
