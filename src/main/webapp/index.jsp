@@ -64,8 +64,11 @@
                             %>
                             
                             <div class="card">
-        <!--// product  image-->                         
-        <img src="Image/product/<%= p.getpPhoto() %>" class="card-img-top m-1" alt="product image">
+        <!--// product  image-->    
+        <div class="contauner text-center">
+             <img src="Image/product/<%= p.getpPhoto() %>" class="card-img-top m-1" style=" width:auto; max-height:150px;"   alt="product image">
+        </div>
+       
                                 
                                 <div class="card-body">
                                     <h5 class="card-title"><%= p.getpTitle() %></h5>
