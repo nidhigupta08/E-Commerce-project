@@ -33,7 +33,7 @@ public class ProductDao {
      }
    
      
-     //get all products
+     //get all  products
      
      public List<Product> getAllProducts(){
          Session s=this.factory.openSession();

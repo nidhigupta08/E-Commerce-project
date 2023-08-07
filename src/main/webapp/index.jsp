@@ -22,6 +22,7 @@
             <% 
                String cat= request.getParameter("category");
             ProductDao dao=new ProductDao(FactoryProvider.getFactory());
+            
              List<Product> list= null;
             if(cat.trim().equals("all")){
                 list=dao.getAllProducts();
@@ -86,7 +87,7 @@
                                     </p>
                                 </div>
                                     
-                                    <div clas="card-footer">
+                                    <div class="card-footer">
                                         <button class="btn custom-bg text-white-black">ADD to cart</button>
                                     </div>
                                     <div class="font-weight-bold mx-2">&#8377;<%= p.getpPrice() %></div>
