@@ -49,6 +49,11 @@ public class ProductDao {
          query.setParameter("id",cid);
          List<Product>list=query.list();
          return list;
+         
+//          return list;
+//          return list;
+         
+         
      }
      
 }
