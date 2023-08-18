@@ -15,3 +15,12 @@
   color:black;
   border-color: skyblue;
 }
+.discount-label{
+    font-size:10px;
+    dont-style:italic!important;
+/*    text-decoration:line-through;*/
+}
+.product-card:hover{
+     background: lightblue;
+    cursor:pointer;
+}
