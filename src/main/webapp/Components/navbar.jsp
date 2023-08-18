@@ -32,8 +32,16 @@
       </li>
      
     </ul>
+      
       <!--conditional rendering-->
       <ul class ="navbar-nav ml-auto">
+          
+          <li class="nav-item active">
+              <a class="nav-link" href="#!"><i class="fa fa-cart-plus"></i></a>
+         </li>
+          
+          
+          
           <%
            if(user1==null){
            %>
