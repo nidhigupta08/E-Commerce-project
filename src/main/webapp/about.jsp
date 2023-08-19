@@ -12,5 +12,6 @@
     <body>
           <%@include file="Components/common_css_js.jsp" %>
         <h1>About page</h1>
+         <%@include file="Components/common_modals.jsp"%>
     </body>
 </html>

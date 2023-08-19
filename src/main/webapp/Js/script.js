@@ -8,6 +8,7 @@ function add_to_cart(pid, pname, price) {
         products.push(product);
         localStorage.setItem("cart", JSON.stringify(products));
         console.log("Product is added for the first time");
+        showToast("Item is added to cart");
     } else {
         //cart is already present
         let pcart = JSON.parse(cart);
@@ -25,6 +26,7 @@ function add_to_cart(pid, pname, price) {
             })
             localStorage.setItem("cart", JSON.stringify(pcart));
             console.log("Product quantity is increased");
+             showToast(oldProduct.productName + " quantity is increased,Quantity="+ oldProduct.productQuantity);
         } 
         else {
     //we have to add the product
@@ -32,6 +34,90 @@ function add_to_cart(pid, pname, price) {
     pcart.push(product);
     localStorage.setItem("cart", JSON.stringify(pcart));
     console.log("Product is added");
+     showToast("Product is added to cartt");
 }
     }
-} 
+   // updateCart();
+}
+//update cart
+
+function updateCart(){
+   let cartString= localStorage.getItem("cart");
+   let cart=JSON.parse(cartString);
+   if(cart==null ||cart.length==0){
+       
+       console.log("cart is empty");
+       $(".cart-items").html("(0)");
+       $(".cart-body").html("<h3>Cart does not have any items </h3>");
+       $(".checkout-btn").attr('disabled',true);
+   }
+   else{
+       //there is some items in cart to show
+   console.log(cart);
+     $(".cart-items").html(`(${cart.length})`);
+     let table= `
+            <table class='table'>
+            <thead class='thead-light'>
+    
+         <tr>
+        
+            <th>Item Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Total Price</th>
+            <th>Action</th>
+           
+        </tr>
+    
+            </thead>
+        `;
+        let totalPrice=0;
+        cart.map((item)=>{
+            
+            table+=`
+                <tr>
+                    <td>${item.productName}</td>
+                    <td>${item.productPrice}</td>   
+                    <td>${item.productQuantity}</td>
+                     <td>${item.productQuantity *item.productPrice}</td>
+                     <td><button onclick ="deteleItemFromCart(${item.productId})" class='btn btn-danger btn-sm'>Remove</button></td>
+                </tr>
+            `
+            totalPrice+=item.productPrice * item.productQuantity;
+            
+        })
+       table=table+ ` 
+      <tr><td colspan='5' class="text-right font-weight-bold">Total Price: ${totalPrice}</td></tr>
+        </table>`
+        
+        $(".cart-body").html(table);
+        
+         $(".checkout-btn").attr('disabled',false);
+    }
+    
+}
+
+//delete the items
+function deteleItemFromCart(pid){
+    let cart=JSON.parse(localStorage.getItem('cart'));
+    let newcart=cart.filter((item)=> item.productId !=pid)
+    localStorage.setItem('cart', JSON.stringify(newcart));
+    updateCart();
+    
+     showToast("Item is removed from cart");
+}
+
+$(document).ready(function(){
+     updateCart();
+})
+
+function showToast(content){
+    $("#toast").addClass("display");
+    $("#toast").html(content);
+    setTimeout(()=>{
+        $("#toast").removeClass("display");
+    }, 2000);
+}
+  function goToCheckout(){
+      window.location="checkout.jsp";
+  }

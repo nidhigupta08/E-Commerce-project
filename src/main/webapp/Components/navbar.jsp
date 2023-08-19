@@ -37,11 +37,9 @@
       <ul class ="navbar-nav ml-auto">
           
           <li class="nav-item active">
-              <a class="nav-link" href="#!"><i class="fa fa-cart-plus"></i></a>
+              <a class="nav-link" href="#!" data-toggle="modal" data-target="#cart"><i class="bi bi-cart"style="font-size:20px;" ></i><span class="m1-0 cart-items">(0)</span></a>
          </li>
-          
-          
-          
+                
           <%
            if(user1==null){
            %>
@@ -53,9 +51,10 @@
          </li>
           <%    }   
               else{
- %>
+            %>
             <li class="nav-item active">
-            <a class="nav-link" href="#"><%=user1.getUserName()%></a>
+               <a class="nav-link" href="<%= user1.getUserType().equals("admin") ? "admin.jsp" : "normal.jsp" %>"><%= user1.getUserName() %></a>
+
          </li>
          <li class="nav-item active">
             <a class="nav-link" href="LogoutServlet">Logout</a>
