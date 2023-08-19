@@ -1,4 +1,6 @@
 
+<%@page import="com.learn.mavenproject.helper.Helper"%>
+<%@page import="java.util.Map"%>
 <%@page import="java.util.List"%>
 <%@page import="com.learn.mavenproject.entities.Category"%>
 <%@page import="com.learn.mavenproject.helper.FactoryProvider"%>
@@ -17,10 +19,18 @@
             response.sendRedirect("login.jsp");
             return;
         }
-
-    }
+}
 %>
 
+<%   CategoryDao cdao = new CategoryDao(FactoryProvider.getFactory());
+      List<Category> list = cdao.getCategories();
+      
+//getting count of items
+
+ Map<String,Long> m = Helper.getCounts(FactoryProvider.getFactory());
+ 
+  %>
+                            
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -47,7 +57,7 @@
                             <div class=container">
                                 <img  style="max-width:150px;" class="img-fluid rounded-circle" src="Image/man.png" alt=" Categories image"/>
                             </div>
-                            <h1>345</h1>
+                            <h1><%= m.get("userCount")%></h1>
                             <h1 class="text-uppercase  text-muted ">Users</h1>
 
                         </div>
@@ -61,7 +71,7 @@
                             <div class=container">
                                 <img style="max-width:150px;" class="img-fluid rounded-circle"  src="Image/list.png" alt=" Categories image"/>
                             </div>
-                            <h1>345</h1>
+                            <h1><%= list.size()%></h1>
                             <h1 class="text-uppercase  text-muted ">Categories</h1>
 
                         </div>
@@ -75,7 +85,7 @@
                             <div class=container">
                                 <img style="max-width:150px;" class="img-fluid rounded-circle"  src="Image/delivery-box.png" alt=" Categories image"/>
                             </div>
-                            <h1>345</h1>
+                            <h1><%= m.get("productCount")%></h1>
                             <h1 class="text-uppercase  text-muted ">Products</h1>
 
                         </div>
@@ -204,9 +214,7 @@
                             </div>
 
                             <!--product categories-->
-                            <%                                 CategoryDao cdao = new CategoryDao(FactoryProvider.getFactory());
-                                List<Category> list = cdao.getCategories();
-                            %>
+                            
 
                             <div class="form-group">
                                 <select name="catId" class="form-control">
@@ -245,5 +253,6 @@
             </div>
         </div>
         <!--end of modal-->
+         <%@include file="Components/common_modals.jsp"%>
     </body>
 </html>
