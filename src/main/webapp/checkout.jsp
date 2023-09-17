@@ -16,7 +16,7 @@ User user = (User) session.getAttribute("current-user");
         <title>Checkout</title>
         <%@include file="Components/common_css_js.jsp" %>
     </head>
-    <body>
+    <body style="background-color: #F2F2F2">
         <%@include file= "Components/navbar.jsp" %>
 
         <div class="container">
@@ -27,7 +27,9 @@ User user = (User) session.getAttribute("current-user");
                     <div class="card">
                         <!--cart--> 
                         <div class="card-body">
+                              
                             <h3 class="text-center mb-4">Your Selected items</h3>
+                             <hr width="350px;" color="black">
                             <div class="cart-body">
 
                             </div>
@@ -41,33 +43,34 @@ User user = (User) session.getAttribute("current-user");
                         <!--cart--> 
                         <div class="card-body">
                             <h3 class="text-center mb-4">Your details for order</h3>
-
+ <hr width="350px;" color="black">
                             <form action="#!">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Email address</label>
+                                    <label for="exampleInputEmail1"><b>Email address</b></label>
                                     <input value="<%= user.getUserEmail()%>" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
                                     <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                                 </div>
                                 <div class="form-group">
-                                    <label for="name"> Your Name</label>
+                                    <label for="name"><b> Your Name</b></label>
                                     <input value="<%= user.getUserName()%>" type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter name">
                                    
                                 </div>
 
                                     <div class="form-group">
-                                    <label for="name"> Your Contact</label>
+                                        <label for="name"> <b>Your Contact</b></label>
                                     <input value="<%= user.getUserPhone()%>" type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter contact number">
                                     
                                 </div>
                                     
                                 <div class="form-group">
-                                    <label for="exampleFormControlTextarea1">Your shipping address</label>
+                                    <label for="exampleFormControlTextarea1"><b>Your shipping address </b></label>
                                     <textarea value="<%= user.getUserAddress()%>" class="form-control" id="exampleFormControlTextarea1" placeholder="enter your address" rows="3"></textarea>
                                 </div>
                                 
                                 <div class="container text-center">
-                                    <button class="btn btn-outline-success">Order Now</button>
-                                    <button class="btn btn-outline-primary">Continue Shopping</button>
+                                    <button class="btn btn-outline-success"><a href=OrderConfirm.jsp>Order Now</a></button>
+                                    <button class="btn btn-outline-primary" ><a href=" index.jsp">Continue Shopping</a></button>
+                                    
                                 </div>
                             </form>
                         </div>
