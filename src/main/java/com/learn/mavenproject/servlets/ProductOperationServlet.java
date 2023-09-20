@@ -114,7 +114,7 @@ public class ProductOperationServlet extends HttpServlet {
                     
              // out.println("Product save successfully");       
             HttpSession httpSession=request.getSession();
-            httpSession.setAttribute("message", "Product is added succesfully:");           
+            httpSession.setAttribute("message", "Product is added succesfully");           
             response.sendRedirect("admin.jsp");
             return;
               } 

@@ -43,7 +43,7 @@ public class RegisterServlet extends HttpServlet {
             hibernateSession.close();
             
                 HttpSession httpSession=request.getSession();
-                httpSession.setAttribute("message","Registration successful!!User ID is" +userId);
+                httpSession.setAttribute("message","Registration successful!!");
                 response.sendRedirect("register.jsp");
                 return;
  

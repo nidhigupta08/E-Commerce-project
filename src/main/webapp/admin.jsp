@@ -39,7 +39,7 @@
         <title>Admin page</title>
         <%@include file="Components/common_css_js.jsp"%>
     </head>
-    <body>
+    <body style="background-color: #F2F2F2">
         <%@include file="Components/navbar.jsp"%>
 
         <div class="container admin">

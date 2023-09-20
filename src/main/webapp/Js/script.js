@@ -34,10 +34,10 @@ function add_to_cart(pid, pname, price) {
     pcart.push(product);
     localStorage.setItem("cart", JSON.stringify(pcart));
     console.log("Product is added");
-     showToast("Product is added to cartt");
+     showToast("Product is added to cart");
 }
     }
-   // updateCart();
+    updateCart();
 }
 //update cart
 
@@ -107,9 +107,9 @@ function deteleItemFromCart(pid){
      showToast("Item is removed from cart");
 }
 
-$(document).ready(function(){
-     updateCart();
-})
+//$(document).ready(function(){
+//     updateCart();
+//})
 
 function showToast(content){
     $("#toast").addClass("display");
